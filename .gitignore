@@ -10,3 +10,9 @@ dmx_app/dmx_app/Debug/dmx_app.hex
 dmx_app/dmx_app/Debug/dmx_app.lss
 dmx_app/dmx_app/Debug/dmx_app.map
 dmx_app/dmx_app/Debug/dmx_app.srec
+dmx_app/dmx_app/Debug/main.d
+dmx_app/dmx_app/Debug/main.o
+uart/.vs/uart/v14/.atsuo
+uart/uart/Debug/libuart_debug.a
+uart/uart/Debug/uart_library.d
+uart/uart/Debug/uart_library.o
