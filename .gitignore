@@ -1,3 +1,12 @@
 # git ignore file
 dmx/.vs/dmx/v14/.atsuo
 dmx/dmx/Debug/dmx_library.d
+dmx/dmx/Debug/dmx_library.o
+dmx/dmx/Debug/libdmx_debug.a
+dmx_app/.vs/dmx_app/v14/.atsuo
+dmx_app/dmx_app/Debug/dmx_app.eep
+dmx_app/dmx_app/Debug/dmx_app.elf
+dmx_app/dmx_app/Debug/dmx_app.hex
+dmx_app/dmx_app/Debug/dmx_app.lss
+dmx_app/dmx_app/Debug/dmx_app.map
+dmx_app/dmx_app/Debug/dmx_app.srec
