@@ -44,7 +44,6 @@ uart_status_enum_t uart_initialisation(void)
 	return UART_SUCCESS;
 }
 
-/* API - UART Tx function */
 /* Polling version */
 void uart_transmit(uint8_t * data, size_t length)
 {

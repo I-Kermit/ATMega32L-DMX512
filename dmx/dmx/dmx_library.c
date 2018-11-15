@@ -27,22 +27,35 @@ static dmx_uart_enable_fp   uart_enable_fp   = NULL;
 #define F_CPU 8000000
 #include <util/delay.h>
 #define DMX_TX_PIN (PD1)
-static void add_break_and_mab(void)
+
+inline static void initialise_output(void)
 {
-	uart_disable_fp();
-	/* PD1 == TXD */
 	/* Set as output */
 	DDRD |= (1 << DMX_TX_PIN);
+}
+
+inline static void add_break_and_mab(void)
+{
+	/* PD1 == TXD */
+
 	/* HIGH */
 	PORTD |= (1 << DMX_TX_PIN);
+	uart_disable_fp();	
 	/* LOW */
 	PORTD &= ~(1 << DMX_TX_PIN);
-	_delay_ms(120);
+	_delay_us(100);
 	/* HIGH */
 	PORTD |= (1 << DMX_TX_PIN);
-	_delay_ms(30);
+	_delay_us(12);
 	/* LOW */
 	PORTD &= ~(1 << DMX_TX_PIN);
+}
+
+inline static void add_idle(void)
+{
+	/* HIGH */
+	PORTD |= (1 << DMX_TX_PIN);
+	uart_disable_fp();	
 }
 
 /* API functions */
@@ -89,6 +102,8 @@ dmx_status_enum_t dmx_initialise(dmx_uart_transmit_fp transmit_fp,
 		status = DMX_FAILURE;
 	}
 
+	initialise_output();
+
 	return status;
 }
 
@@ -134,6 +149,7 @@ dmx_status_enum_t dmx_send_data(void)
 	add_break_and_mab();
 	uart_enable_fp();
 	uart_transmit_fp(dmx_data_in_use_p, DMX_SIZE);
-	
+	add_idle();
+
 	return DMX_SUCCESS;
 }
