@@ -21,3 +21,6 @@ atmega_library/uart/.vs/uart/v14/.atsuo
 atmega_library/uart/uart/Debug/libuart_debug.a
 atmega_library/uart/uart/Debug/uart_library.d
 atmega_library/uart/uart/Debug/uart_library.o
+dmx_app/dmx_app/Release/dmx_app.map
+dmx_app/dmx_app/Release/main.d
+dmx_app/dmx_app/Release/main.o
