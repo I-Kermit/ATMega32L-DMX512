@@ -1,8 +1,4 @@
 # git ignore file
-dmx/.vs/dmx/v14/.atsuo
-dmx/dmx/Debug/dmx_library.d
-dmx/dmx/Debug/dmx_library.o
-dmx/dmx/Debug/libdmx_debug.a
 dmx_app/.vs/dmx_app/v14/.atsuo
 dmx_app/dmx_app/Debug/dmx_app.eep
 dmx_app/dmx_app/Debug/dmx_app.elf
@@ -12,7 +8,16 @@ dmx_app/dmx_app/Debug/dmx_app.map
 dmx_app/dmx_app/Debug/dmx_app.srec
 dmx_app/dmx_app/Debug/main.d
 dmx_app/dmx_app/Debug/main.o
-uart/.vs/uart/v14/.atsuo
-uart/uart/Debug/libuart_debug.a
-uart/uart/Debug/uart_library.d
-uart/uart/Debug/uart_library.o
+atmega_library/.vs/atmega_library/v14/.atsuo
+atmega_library/dmx/.vs/dmx/v14/.atsuo
+atmega_library/dmx/dmx/Debug/dmx_library.d
+atmega_library/dmx/dmx/Debug/dmx_library.o
+atmega_library/dmx/dmx/Debug/libdmx_debug.a
+atmega_library/spi/.vs/spi/v14/.atsuo
+atmega_library/spi/spi/Debug/libspi_debug.a
+atmega_library/spi/spi/Debug/spi_library.d
+atmega_library/spi/spi/Debug/spi_library.o
+atmega_library/uart/.vs/uart/v14/.atsuo
+atmega_library/uart/uart/Debug/libuart_debug.a
+atmega_library/uart/uart/Debug/uart_library.d
+atmega_library/uart/uart/Debug/uart_library.o
