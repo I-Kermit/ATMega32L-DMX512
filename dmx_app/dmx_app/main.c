@@ -14,6 +14,7 @@
 
 #include "dmx.h"
 #include "uart.h"
+#include "spi.h"
 
 #define DMX_START (0x00) // Start word.
 

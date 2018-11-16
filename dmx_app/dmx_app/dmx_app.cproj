@@ -76,8 +76,9 @@
   <avrgcc.compiler.directories.IncludePaths>
     <ListValues>
       <Value>%24(PackRepoDir)\Atmel\ATmega_DFP\1.2.272\include</Value>
-      <Value>../../../dmx/dmx</Value>
-      <Value>../../../uart/uart</Value>
+      <Value>../../../atmega_library/dmx/dmx</Value>
+      <Value>../../../atmega_library/uart/uart</Value>
+      <Value>../../../atmega_library/spi/spi</Value>
     </ListValues>
   </avrgcc.compiler.directories.IncludePaths>
   <avrgcc.compiler.optimization.level>Optimize for size (-Os)</avrgcc.compiler.optimization.level>
@@ -89,12 +90,14 @@
       <Value>libm</Value>
       <Value>libuart_release.a</Value>
       <Value>libdmx_release.a</Value>
+      <Value>libspi_release.a</Value>
     </ListValues>
   </avrgcc.linker.libraries.Libraries>
   <avrgcc.linker.libraries.LibrarySearchPaths>
     <ListValues>
-      <Value>../../../uart/uart/Release</Value>
-      <Value>../../../dmx/dmx/Release</Value>
+      <Value>../../../atmega_library/uart/uart/Release</Value>
+      <Value>../../../atmega_library/dmx/dmx/Release</Value>
+      <Value>../../../atmega_library/spi/spi/Release</Value>
     </ListValues>
   </avrgcc.linker.libraries.LibrarySearchPaths>
   <avrgcc.assembler.general.IncludePaths>
@@ -124,8 +127,9 @@
   <avrgcc.compiler.directories.IncludePaths>
     <ListValues>
       <Value>%24(PackRepoDir)\Atmel\ATmega_DFP\1.2.272\include</Value>
-      <Value>../../../dmx/dmx</Value>
-      <Value>../../../uart/uart</Value>
+      <Value>../../../atmega_library/dmx/dmx</Value>
+      <Value>../../../atmega_library/uart/uart</Value>
+      <Value>../../../atmega_library/spi/spi</Value>
     </ListValues>
   </avrgcc.compiler.directories.IncludePaths>
   <avrgcc.compiler.optimization.level>Optimize (-O1)</avrgcc.compiler.optimization.level>
@@ -138,12 +142,14 @@
       <Value>libm</Value>
       <Value>libuart_debug.a</Value>
       <Value>libdmx_debug.a</Value>
+      <Value>libspi_debug.a</Value>
     </ListValues>
   </avrgcc.linker.libraries.Libraries>
   <avrgcc.linker.libraries.LibrarySearchPaths>
     <ListValues>
-      <Value>../../../uart/uart/Debug</Value>
-      <Value>../../../dmx/dmx/Debug</Value>
+      <Value>../../../atmega_library/uart/uart/Debug</Value>
+      <Value>../../../atmega_library/dmx/dmx/Debug</Value>
+      <Value>../../../atmega_library/spi/spi/Debug</Value>
     </ListValues>
   </avrgcc.linker.libraries.LibrarySearchPaths>
   <avrgcc.assembler.general.IncludePaths>
