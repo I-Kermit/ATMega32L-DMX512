@@ -11,7 +11,7 @@
 #include "uart.h"
 
 /* ToDo: Common setting */
-#define F_CPU 8000000
+#define F_CPU 8000000UL
 
 /* API functions */
 
@@ -25,7 +25,7 @@ inline void uart_disable_tx(void)
 	UCSRB &= ~(1 << TXEN);
 }
 
-uart_status_enum_t uart_initialisation(void)
+uart_status_enum_t uart_initialise(void)
 {
 	#undef BAUD  // avoid compiler warning
 	#define BAUD 250000

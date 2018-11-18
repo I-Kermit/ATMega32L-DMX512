@@ -16,7 +16,7 @@ typedef enum
 }
 uart_status_enum_t;
 
-uart_status_enum_t uart_initialisation(void);
+uart_status_enum_t uart_initialise(void);
 void uart_enable_tx(void);
 void uart_disable_tx(void);
 void uart_transmit(uint8_t * data, size_t length);
