@@ -24,7 +24,7 @@ static dmx_uart_enable_fp   uart_enable_fp   = NULL;
 /* Internal */
 
 /* ToDo: Common setting */
-#define F_CPU 8000000
+#define F_CPU 8000000UL
 #include <util/delay.h>
 #define DMX_TX_PIN (PD1)
 
