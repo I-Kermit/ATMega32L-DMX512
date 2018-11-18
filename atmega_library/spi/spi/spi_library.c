@@ -7,22 +7,24 @@
 
 #include <assert.h>
 #include <stdio.h>
+#include <stdbool.h>
 
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
 #include "spi.h"
 
-static uint8_t  *spi_data_p     = NULL;
-static uint16_t  spi_data_max   = 0;
-static uint16_t  spi_data_index = 0;
-spi_buffer_full_fp buffer_full_callback_fp = NULL;
+static          uint8_t  *spi_data_p       = NULL;
+static          uint16_t  spi_data_max     = 0;
+static volatile uint16_t  spi_data_index   = 0;
+static bool spi_interrupt_flag = false;
 
 static void reset_data(void)
 {
 	spi_data_p     = NULL;
 	spi_data_index = 0;
 	spi_data_max   = 0;
+	spi_interrupt_flag = false;
 }
 
 /* API functions */
@@ -41,11 +43,9 @@ void spi_initialise_data(uint8_t *data_p, uint16_t data_max)
  * PB4 SS   (SPI Slave Select Input)
 */
 
-spi_status_enum_t spi_slave_initialise(spi_buffer_full_fp buffer_full_fp)
+spi_status_enum_t spi_slave_initialise(void)
 {
 	spi_status_enum_t status = SPI_SUCCESS;
-
-SPDR |= 0;
 
 	/* Set MISO (PB6) output, all others input */
 	DDRB = (1 << PB6);
@@ -54,22 +54,20 @@ SPDR |= 0;
 	
 	reset_data();
 
-	assert(NULL != buffer_full_fp);
-	
-	if( NULL != buffer_full_fp )
-	{
-		buffer_full_callback_fp = buffer_full_fp;
-	}
-	else
-	{
-		status = SPI_FAILURE;
-	}
-
 	return status;
 }
 
+bool spi_interrupt_fired(void)
+{
+	return spi_interrupt_flag;
+}
+
+void spi_interrupt_reset(void)
+{
+	spi_interrupt_flag = false;
+}
+
 /* Polling version */
-#if 0
 void spi_slave_receive(uint8_t *data, size_t length)
 {
 	for(uint16_t loop=0; loop<length; loop++)
@@ -83,25 +81,15 @@ void spi_slave_receive(uint8_t *data, size_t length)
 		data[loop] = SPDR;
 	}
 }
-#endif
 
-/* SPI Transmission/reception ISR */
-static volatile uint16_t no_of_ints;
-static volatile uint8_t dummy_read;
+/* SPI Reception ISR */
 ISR(SPI_STC_vect)
 {
-	volatile static uint8_t spi_in = 0;
-	spi_in = SPDR;
-dummy_read = SPSR;
-no_of_ints++;
+	spi_data_p[spi_data_index++] = SPDR;
 
-	if( spi_data_index < spi_data_max )
-	{
-		spi_data_p[spi_data_index++] = spi_in; //SPDR;
-	}
-	else
+	if( spi_data_index == spi_data_max )
 	{
 		spi_data_index = 0;
-		// ToDo: Find out whether this takes too long.
+		spi_interrupt_flag = true;
 	}
 }

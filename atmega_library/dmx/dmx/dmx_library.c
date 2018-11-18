@@ -21,8 +21,6 @@ static dmx_uart_transmit_fp uart_transmit_fp = NULL;
 static dmx_uart_disable_fp  uart_disable_fp  = NULL;
 static dmx_uart_enable_fp   uart_enable_fp   = NULL;
 
-/* Internal */
-
 /* ToDo: Common setting */
 #define F_CPU 8000000UL
 #include <util/delay.h>
@@ -66,7 +64,7 @@ dmx_status_enum_t dmx_initialise(dmx_uart_transmit_fp transmit_fp,
 {
 	dmx_status_enum_t status = DMX_SUCCESS;
 
-	#if 0
+#if 0
 	/* Clear the data out. */
 	uint16_t loop = DMX_SIZE;
 
@@ -76,14 +74,14 @@ dmx_status_enum_t dmx_initialise(dmx_uart_transmit_fp transmit_fp,
 		dmx_data_buffer_2[loop] = 0;
 	}
 
-	#else
+#else
 
 	for(uint16_t loop=0; loop < DMX_SIZE; loop++)
 	{
 		dmx_data_buffer_1[loop] = 0;
 		dmx_data_buffer_2[loop] = 0;
 	}
-	#endif
+#endif
 
 	dmx_data_in_use_p = dmx_data_buffer_2;
 

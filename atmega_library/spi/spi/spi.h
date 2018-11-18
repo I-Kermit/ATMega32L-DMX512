@@ -9,7 +9,7 @@
 #ifndef SPI_H_
 #define SPI_H_
 
-//extern volatile /*static*/ uint16_t no_of_ints;
+#include <stdbool.h>
 
 typedef enum
 {
@@ -18,9 +18,9 @@ typedef enum
 }
 spi_status_enum_t;
 
-typedef void (*spi_buffer_full_fp)(void);
-
-spi_status_enum_t spi_slave_initialise(spi_buffer_full_fp buffer_full_fp);
+spi_status_enum_t spi_slave_initialise(void);
+bool spi_interrupt_fired(void);
+void spi_interrupt_reset(void);
 void spi_initialise_data(uint8_t *data_p, uint16_t data_max);
 void spi_slave_receive(uint8_t * data, size_t length);
 
