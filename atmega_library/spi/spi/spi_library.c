@@ -83,13 +83,26 @@ void spi_slave_receive(uint8_t *data, size_t length)
 }
 
 /* SPI Reception ISR */
+#if defined(DEBUG)
+static volatile uint16_t debug_no_of_ints = 0;
+static volatile uint16_t debug_no_of_spi_frames = 0;
+#endif
+
 ISR(SPI_STC_vect)
 {
+#if defined(DEBUG)
+	debug_no_of_ints++;
+#endif
+
 	spi_data_p[spi_data_index++] = SPDR;
 
 	if( spi_data_index == spi_data_max )
 	{
 		spi_data_index = 0;
 		spi_interrupt_flag = true;
+
+		#if defined(DEBUG)
+			debug_no_of_spi_frames++;
+		#endif
 	}
 }
