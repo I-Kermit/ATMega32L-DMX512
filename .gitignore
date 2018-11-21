@@ -24,3 +24,12 @@ atmega_library/uart/uart/Debug/uart_library.o
 dmx_app/dmx_app/Release/dmx_app.map
 dmx_app/dmx_app/Release/main.d
 dmx_app/dmx_app/Release/main.o
+atmega_library/dmx/dmx/Release/dmx_library.d
+atmega_library/dmx/dmx/Release/dmx_library.o
+atmega_library/dmx/dmx/Release/libdmx_release.a
+atmega_library/spi/spi/Release/libspi_release.a
+atmega_library/spi/spi/Release/spi_library.d
+atmega_library/spi/spi/Release/spi_library.o
+atmega_library/uart/uart/Release/libuart_release.a
+atmega_library/uart/uart/Release/uart_library.d
+atmega_library/uart/uart/Release/uart_library.o
