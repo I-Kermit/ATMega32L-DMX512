@@ -10,3 +10,5 @@ A demonstration is on YouTube…
 https://www.youtube.com/watch?v=OgjfR1OaRTE
 
 ![alt text](https://github.com/I-Kermit/ATMega32L-DMX512/blob/master/ATMEGA_DMX.png "Schematic")
+
+![alt text](https://github.com/I-Kermit/ATMega32L-DMX512/blob/master/ATmega_DMX.jpg "Circuit")
