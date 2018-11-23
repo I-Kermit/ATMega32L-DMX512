@@ -6,6 +6,7 @@
  */ 
 
 #define USE_SPI_DATA
+#define ITERATIONS (10)
 
 /* ToDo: Common setting */
 #define F_CPU 8000000UL
@@ -66,8 +67,7 @@ int main(void)
 	spi_status = spi_slave_initialise();
 	assert(SPI_SUCCESS == spi_status);
 
-    /* ToDo: 13 == start byte + 1 frame of StudioDue NanoLED data */
-	spi_initialise_data(spi_data, 13 /* DMX_SIZE */);
+	spi_initialise_data(spi_data, DMX_SIZE);
 
 	sei();
 
@@ -90,7 +90,7 @@ int main(void)
 			
 		if( spi_interrupt_fired() )
 		{
-			dmx_status = dmx_load_data(spi_data, 13);
+			dmx_status = dmx_load_data(spi_data, DMX_SIZE);
 			spi_interrupt_reset();
 		}
 	}
@@ -101,7 +101,7 @@ int main(void)
     {
 		dmx_status = dmx_load_data(test_data_1, sizeof(test_data_1));
 		assert(DMX_SUCCESS == dmx_status);
-		for(uint32_t iterations = 0; iterations < 10; iterations++)
+		for(uint32_t iterations = 0; iterations < ITERATIONS; iterations++)
 		{
 			dmx_status = dmx_send_data();
 			assert(DMX_SUCCESS == dmx_status);
@@ -110,7 +110,7 @@ int main(void)
 		
 		dmx_status = dmx_load_data(test_data_2, sizeof(test_data_2));
 		assert(DMX_SUCCESS == dmx_status);		
-		for(uint32_t iterations = 0; iterations < 10; iterations++)
+		for(uint32_t iterations = 0; iterations < ITERATIONS; iterations++)
 		{
 			dmx_status = dmx_send_data();
 			assert(DMX_SUCCESS == dmx_status);
