@@ -107,7 +107,7 @@ dmx_status_enum_t dmx_initialise(dmx_uart_transmit_fp transmit_fp,
 
 dmx_status_enum_t dmx_load_data(uint8_t * data, size_t length)
 {
-	assert(DMX_SIZE > length);
+	assert(DMX_SIZE >= length);
 
 	ATOMIC_BLOCK(ATOMIC_RESTORESTATE)
 	{
