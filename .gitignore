@@ -33,3 +33,11 @@ atmega_library/spi/spi/Release/spi_library.o
 atmega_library/uart/uart/Release/libuart_release.a
 atmega_library/uart/uart/Release/uart_library.d
 atmega_library/uart/uart/Release/uart_library.o
+*.a
+*.d
+*.o
+*.eep
+*.elf
+*.hex
+*.lss
+*.srec
