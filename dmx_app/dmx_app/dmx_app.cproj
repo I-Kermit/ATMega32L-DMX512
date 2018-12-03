@@ -60,52 +60,55 @@
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <ToolchainSettings>
       <AvrGcc>
-        <avrgcc.common.Device>-mmcu=atmega32 -B "%24(PackRepoDir)\Atmel\ATmega_DFP\1.3.300\gcc\dev\atmega32"</avrgcc.common.Device>
-        <avrgcc.common.outputfiles.hex>True</avrgcc.common.outputfiles.hex>
-        <avrgcc.common.outputfiles.lss>True</avrgcc.common.outputfiles.lss>
-        <avrgcc.common.outputfiles.eep>True</avrgcc.common.outputfiles.eep>
-        <avrgcc.common.outputfiles.srec>True</avrgcc.common.outputfiles.srec>
-        <avrgcc.common.outputfiles.usersignatures>False</avrgcc.common.outputfiles.usersignatures>
-        <avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>
-        <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
-        <avrgcc.compiler.symbols.DefSymbols>
-          <ListValues>
-            <Value>NDEBUG</Value>
-          </ListValues>
-        </avrgcc.compiler.symbols.DefSymbols>
-        <avrgcc.compiler.directories.IncludePaths>
-          <ListValues>
-            <Value>../../../atmega_library/dmx/dmx</Value>
-            <Value>../../../atmega_library/uart/uart</Value>
-            <Value>../../../atmega_library/spi/spi</Value>
-            <Value>%24(PackRepoDir)\Atmel\ATmega_DFP\1.3.300\include</Value>
-          </ListValues>
-        </avrgcc.compiler.directories.IncludePaths>
-        <avrgcc.compiler.optimization.level>Optimize for size (-Os)</avrgcc.compiler.optimization.level>
-        <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
-        <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
-        <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
-        <avrgcc.linker.libraries.Libraries>
-          <ListValues>
-            <Value>libm</Value>
-            <Value>libuart_release.a</Value>
-            <Value>libdmx_release.a</Value>
-            <Value>libspi_release.a</Value>
-          </ListValues>
-        </avrgcc.linker.libraries.Libraries>
-        <avrgcc.linker.libraries.LibrarySearchPaths>
-          <ListValues>
-            <Value>../../../atmega_library/uart/uart/Release</Value>
-            <Value>../../../atmega_library/dmx/dmx/Release</Value>
-            <Value>../../../atmega_library/spi/spi/Release</Value>
-          </ListValues>
-        </avrgcc.linker.libraries.LibrarySearchPaths>
-        <avrgcc.assembler.general.IncludePaths>
-          <ListValues>
-            <Value>%24(PackRepoDir)\Atmel\ATmega_DFP\1.3.300\include</Value>
-          </ListValues>
-        </avrgcc.assembler.general.IncludePaths>
-      </AvrGcc>
+  <avrgcc.common.Device>-mmcu=atmega32 -B "%24(PackRepoDir)\Atmel\ATmega_DFP\1.3.300\gcc\dev\atmega32"</avrgcc.common.Device>
+  <avrgcc.common.outputfiles.hex>True</avrgcc.common.outputfiles.hex>
+  <avrgcc.common.outputfiles.lss>True</avrgcc.common.outputfiles.lss>
+  <avrgcc.common.outputfiles.eep>True</avrgcc.common.outputfiles.eep>
+  <avrgcc.common.outputfiles.srec>True</avrgcc.common.outputfiles.srec>
+  <avrgcc.common.outputfiles.usersignatures>False</avrgcc.common.outputfiles.usersignatures>
+  <avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>
+  <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
+  <avrgcc.compiler.symbols.DefSymbols>
+    <ListValues>
+      <Value>NDEBUG</Value>
+    </ListValues>
+  </avrgcc.compiler.symbols.DefSymbols>
+  <avrgcc.compiler.directories.IncludePaths>
+    <ListValues>
+      <Value>%24(PackRepoDir)\Atmel\ATmega_DFP\1.3.300\include</Value>
+      <Value>../../../atmega_library/dmx/dmx</Value>
+      <Value>../../../atmega_library/uart/uart</Value>
+      <Value>../../../atmega_library/spi/spi</Value>
+      <Value>../../../atmega_library/timer</Value>
+    </ListValues>
+  </avrgcc.compiler.directories.IncludePaths>
+  <avrgcc.compiler.optimization.level>Optimize for size (-Os)</avrgcc.compiler.optimization.level>
+  <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
+  <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
+  <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
+  <avrgcc.linker.libraries.Libraries>
+    <ListValues>
+      <Value>libm</Value>
+      <Value>libuart_release.a</Value>
+      <Value>libdmx_release.a</Value>
+      <Value>libspi_release.a</Value>
+      <Value>libtimer_release</Value>
+    </ListValues>
+  </avrgcc.linker.libraries.Libraries>
+  <avrgcc.linker.libraries.LibrarySearchPaths>
+    <ListValues>
+      <Value>../../../atmega_library/uart/uart/Release</Value>
+      <Value>../../../atmega_library/dmx/dmx/Release</Value>
+      <Value>../../../atmega_library/spi/spi/Release</Value>
+      <Value>../../../atmega_library/timer/Release</Value>
+    </ListValues>
+  </avrgcc.linker.libraries.LibrarySearchPaths>
+  <avrgcc.assembler.general.IncludePaths>
+    <ListValues>
+      <Value>%24(PackRepoDir)\Atmel\ATmega_DFP\1.3.300\include</Value>
+    </ListValues>
+  </avrgcc.assembler.general.IncludePaths>
+</AvrGcc>
     </ToolchainSettings>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -129,6 +132,7 @@
             <Value>../../../atmega_library/dmx/dmx</Value>
             <Value>../../../atmega_library/uart/uart</Value>
             <Value>../../../atmega_library/spi/spi</Value>
+            <Value>../../../atmega_library/timer</Value>
             <Value>%24(PackRepoDir)\Atmel\ATmega_DFP\1.3.300\include</Value>
           </ListValues>
         </avrgcc.compiler.directories.IncludePaths>
@@ -143,6 +147,7 @@
             <Value>libuart_debug.a</Value>
             <Value>libdmx_debug.a</Value>
             <Value>libspi_debug.a</Value>
+            <Value>libtimer_debug.a</Value>
           </ListValues>
         </avrgcc.linker.libraries.Libraries>
         <avrgcc.linker.libraries.LibrarySearchPaths>
@@ -150,6 +155,7 @@
             <Value>../../../atmega_library/uart/uart/Debug</Value>
             <Value>../../../atmega_library/dmx/dmx/Debug</Value>
             <Value>../../../atmega_library/spi/spi/Debug</Value>
+            <Value>../../../atmega_library/timer/Debug</Value>
           </ListValues>
         </avrgcc.linker.libraries.LibrarySearchPaths>
         <avrgcc.assembler.general.IncludePaths>

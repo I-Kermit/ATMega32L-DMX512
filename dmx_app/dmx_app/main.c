@@ -5,7 +5,9 @@
  * Author : PeterGoddard
  */ 
 
+//#define USE_SOFTWARE_DELAY
 #define USE_SPI_DATA
+
 #define ITERATIONS (10)
 
 /* ToDo: Common setting */
@@ -18,8 +20,7 @@
 #include "dmx.h"
 #include "uart.h"
 #include "spi.h"
-
-#define DMX_START (0x00) // Start word.
+#include "timer.h"
 
 #if defined(USE_SPI_DATA)
 
@@ -27,17 +28,21 @@ static uint8_t spi_data[DMX_SIZE];
 
 #else
 
+/* Start word. */
+#define DMX_START (0x00)
+
 /* StudioDue NanoLed test data */
 static uint8_t test_data_1[] = {DMX_START, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00};
 static uint8_t test_data_2[] = {DMX_START, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x00, 0x00};
 
 #endif
 
-static dmx_uart_transmit_fp uart_transmit_fp = uart_transmit;
-static dmx_uart_disable_fp  uart_disable_fp  = uart_disable_tx;
-static dmx_uart_enable_fp   uart_enable_fp   = uart_enable_tx;
 static dmx_status_enum_t  dmx_status;
 static uart_status_enum_t uart_status;
+
+#if !defined(USE_SOFTWARE_DELAY)
+static timer_status_enum_t timer_status;
+#endif
 
 #if defined(USE_SPI_DATA)
 
@@ -56,11 +61,18 @@ static void one_second_delay(void)
 
 int main(void)
 {
-	dmx_status = dmx_initialise(uart_transmit_fp, uart_enable_fp, uart_disable_fp);
+	dmx_status = dmx_initialise(uart_transmit, uart_enable_tx, uart_disable_tx, timer_run, timer_stop);
 	assert(DMX_SUCCESS == dmx_status);
 
 	uart_status = uart_initialise();
 	assert(UART_SUCCESS == uart_status);
+
+#if !defined(USE_SOFTWARE_DELAY)
+	timer_status = timer_initialise();
+	assert(TIMER_SUCCESS == timer_status);
+	timer_status = timer_set_callback(dmx_timer_callback);
+	assert(TIMER_SUCCESS == timer_status);
+#endif
 
 #if defined(USE_SPI_DATA)
 
@@ -71,8 +83,8 @@ int main(void)
 
 	sei();
 
-    while(1)
-    {
+	for(;;)
+	{
 		if( 0 == delay )
 		{
 			dmx_status = dmx_send_data();
@@ -97,7 +109,7 @@ int main(void)
 	
 #else
 
-    while (1) 
+	for(;;) 
     {
 		dmx_status = dmx_load_data(test_data_1, sizeof(test_data_1));
 		assert(DMX_SUCCESS == dmx_status);
