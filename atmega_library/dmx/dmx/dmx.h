@@ -31,7 +31,6 @@ typedef timer_status_enum_t (*dmx_timer_run_fp)(uint16_t ticks);
 typedef timer_status_enum_t (*dmx_timer_stop_fp)(void);
 
 /* WIP */
-//static bool (*dmx_timer_callback_fp)(void);
 void dmx_timer_callback(void);
 
 dmx_status_enum_t dmx_initialise(dmx_uart_transmit_fp transmit_fp,
